@@ -1,0 +1,160 @@
+{%include file="log/commonmenu.phtml"%}
+
+            <p><a href="{%$baseUrl%}/log/list">アプリケーション一覧</a>　&gt;&gt;ログ管理-Top-アプリログ概要</p>
+            <div id="mainContent">
+            {% if $basicInfo %}
+            <table id="login" class="mytable san" cellspacing="0">
+                    <caption>上位5件の登録ユーザー数[{%$startDate|date_format:"%Y年%m月%d日" %}－{% $endDate|date_format:"%Y年%m月%d日" %}]</caption>
+                    <tr>
+                    <th scope="col">ランク</th>
+                    <th scope="col">年月日</th>
+                    <th scope="col">登録者数</th>
+                    </tr>
+                    {% foreach from=$basicInfo key=k item=data name=foo %}
+                    <tr {%if $smarty.foreach.foo.index%2 %}class="overlight"{%/if%}>
+                    <td class="row">{%$smarty.foreach.foo.index+1%} </td>
+                    <td class="row">{%$data.report_date%}</td>
+                    <td class="row">{%$data.login_count%}</td>
+                    </tr>
+                    {%/foreach%}
+                    </table>
+            {%else if%}
+                                何もありまえん
+            {%/if%}
+            {% if $basicInfo %}
+            <table id="dailyUse" class="mytable san" cellspacing="0">
+                    <caption>上位5件のアプリ利用者数[{%$startDate|date_format:"%Y年%m月%d日" %}－{% $endDate|date_format:"%Y年%m月%d日" %}]</caption>
+                    <tr >
+                    <th scope="col">ランク</th>
+                    <th scope="col">年月日</th>
+                    <th scope="col">アプリ利用者数</th>
+                    </tr>
+                    {% foreach from=$basicInfo key=k item=data name=foo %}
+                    <tr {%if $smarty.foreach.foo.index%2 %}class="overlight"{%/if%}>
+                    <td class="row">{%$smarty.foreach.foo.index+1%} </td>
+                    <td class="row">{%$data.report_date%}</td>
+                    <td class="row">{%$data.daily_login_count%}</td>
+                    </tr>
+                    {%/foreach%}
+                    </table>
+              {%/if%}
+              {% if $genderInfo %}
+              <table id="gender"class="mytable si" cellspacing="0">
+                    <caption>上位5件の男女比率[{%$startDate|date_format:"%Y年%m月%d日" %}－{% $endDate|date_format:"%Y年%m月%d日" %}]</caption>
+                    <tr>
+                    <th scope="col">期間</th>
+                    <th scope="col">男性[比率/人数]</th>
+                    <th scope="col">女性[比率/人数]</th>
+                    <th scope="col">Unknown[比率/人数]</th>
+                    </tr>
+                    <tr>
+                    <td class="row">[{%$startDate|date_format:"%Y年%m月%d日" %}－{% $endDate|date_format:"%Y年%m月%d日" %}]</td>
+                    <td class="row">{%$genderInfo.male_rate%}%[{%$genderInfo.male_count%}人]</td>
+                    <td class="row">{%$genderInfo.female_rate%}%[{%$genderInfo.female_count%}人]</td>
+                    <td class="row">{%$genderInfo.unknown_rate%}%[{%$genderInfo.unknown_count%}人]</td>
+                    </tr>
+                </table>
+                {%/if%}
+                {% if $ageInfo %}
+                <table id="age"class="mytable si" cellspacing="0" summary="The technical specifications of the Apple
+                    PowerMac G5 series">
+                    <caption>上位5件の年齢比率[{%$startDate|date_format:"%Y年%m月%d日" %}－{% $endDate|date_format:"%Y年%m月%d日" %}]</caption>
+                    <tr>
+                        <th scope="col">ランク</th>
+                        <th scope="col">年齢構成</th>
+                        <th scope="col">人数</th>
+                        <th scope="col">全体比率</th>
+                    </tr>
+                    {% foreach from=$ageInfo key=k item=data name=age %}
+                    <tr {%if $smarty.foreach.age.index%2 %}class="overlight"{%/if%}>
+                    <td class="row">{%$smarty.foreach.age.index+1%} </td>
+                    <td class="row">{%$data.name%}</td>
+                    <td class="row">{%$data.count%}人</td>
+                    <td class="row">{%$data.rate%}%</td>
+                    </tr>
+                    {%/foreach%}
+                </table>
+                {%/if%}
+                {% if $addressInfo %}
+                <table id="age"class="mytable" cellspacing="0">
+                    <caption>上位5件の現在地比率[{%$startDate|date_format:"%Y年%m月%d日" %}－{% $endDate|date_format:"%Y年%m月%d日" %}]</caption>
+                    <tr>
+                        <th scope="col">ランク</th>
+                        <th scope="col">都道府県</th>
+                        <th scope="col">人数</th>
+                        <th scope="col">全体比率</th>
+                    </tr>
+                    {% foreach from=$addressInfo key=k item=data name=address %}
+                    <tr {%if $smarty.foreach.address.index%2 %}class="overlight"{%/if%}>
+                    <td class="row">{%$smarty.foreach.address.index+1%} </td>
+                    <td class="row">{%$data.name%}</td>
+                    <td class="row">{%$data.count%}人</td>
+                    <td class="row">{%$data.rate%}%</td>
+                    </tr>
+                    {%/foreach%}
+                </table>
+                {%/if%}
+                {% if $myMixiInfo %}
+                <table id="mymixi"class="mytable" cellspacing="0">
+                    <caption>上位5件のマイミク分布数[{%$startDate|date_format:"%Y年%m月%d日" %}－{% $endDate|date_format:"%Y年%m月%d日" %}]</caption>
+                    <tr>
+                        <th scope="col">ランク</th>
+                        <th scope="col">マイミク人数構成</th>
+                        <th scope="col">人数</th>
+                        <th scope="col">全体比率</th>
+                    </tr>
+                    {% foreach from=$myMixiInfo key=k item=data name=mymixi %}
+                    <tr {%if $smarty.foreach.mymixi.index%2 %}class="overlight"{%/if%}>
+                    <td class="row">{%$smarty.foreach.mymixi.index+1%} </td>
+                    <td class="row">{%$data.name%}</td>
+                    <td class="row">{%$data.count%}人</td>
+                    <td class="row">{%$data.rate%}%</td>
+                    </tr>
+                    {%/foreach%}
+                </table>
+                {%/if%}
+                {% if $inviteInfo %}
+                 <table id="invite"class="mytable" cellspacing="0">
+                    <caption>上位5件のマイミク招待者数[{%$startDate|date_format:"%Y年%m月%d日" %}－{% $endDate|date_format:"%Y年%m月%d日" %}]</caption>
+                    <tr>
+                        <th scope="col">ランク</th>
+                        <th scope="col">招待人数構成</th>
+                        <th scope="col">人数</th>
+                        <th scope="col">全体比率</th>
+                    </tr>
+                    {% foreach from=$inviteInfo key=k item=data name=invite %}
+                    <tr {%if $smarty.foreach.invite.index%2 %}class="overlight"{%/if%}>
+                    <td class="row">{%$smarty.foreach.invite.index+1%} </td>
+                    <td class="row">{%$data.name%}</td>
+                    <td class="row">{%$data.count%}人</td>
+                    <td class="row">{%$data.rate%}%</td>
+                    </tr>
+                    {%/foreach%}
+                </table>
+                {%/if%}
+                {% if $basicInfo %}
+                <table id="feed"class="mytable" cellspacing="0" summary="The technical specifications of the Apple
+                    PowerMac G5 series">
+                <caption>上位5件の総合計配信フィード数[{%$startDate|date_format:"%Y年%m月%d日" %}－{% $endDate|date_format:"%Y年%m月%d日" %}]</caption>
+                    <tr>
+                    <th scope="col">ランク</th>
+                    <th scope="col">年月日</th>
+                    <th scope="col">計配信フィード数</th>
+                    </tr>
+                    {% foreach from=$basicInfo key=k item=data name=foo %}
+                    <tr {%if $smarty.foreach.foo.index%2 %}class="overlight"{%/if%}>
+                    <td class="row">{%$smarty.foreach.foo.index+1%}</td>
+                    <td class="row">{%$data.report_date%}</td>
+                    <td class="row">{%$data.feed_count%}</td>
+                    </tr>
+                    {%/foreach%}
+                    </table>
+                    {%/if%}
+                    <br/><br/><br/>
+                <a href="javascript:void(0);" id = "btnBack" >&lt;&lt;管理アプリケーション一覧へ</a>
+            </div><!--#"mainContent"-->
+        </div><!--#mainColumn-->
+
+    </div><!--/#container-->
+
+{%include file="footer.phtml"%}

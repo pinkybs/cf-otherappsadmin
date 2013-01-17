@@ -1,0 +1,58 @@
+{%include file="header.phtml"%}
+   
+<body id="admin">
+	<div id="top">
+		<h1>OpenSocial APP Control Panel</h1>
+		
+		<p class="user">
+			user:{%$loginId%}|
+			<a href="{%$baseUrl%}/manage/topmenu">管理メニュー</a>|
+			<a href="{%$baseUrl%}/auth/logout">ログアウト</a>
+		</p>
+	</div>
+	
+    <div id="container" class="clearfix">
+        <div id="leftmenu">
+        <h2 >ログメニュー</h2>
+        <ul>
+            <li {%if $isTop%}class="over"{%/if%}><a href="{%$baseUrl%}/log/top?appId={%$appInfo.app_id%}">- アプリログ概要</a></li>
+        </ul>
+        <h2 >トラフィック</h2>
+        <ul>
+            <li {%if $isLogin%}class="over"{%/if%}><a href="{%$baseUrl%}/log/loginuser?appId={%$appInfo.app_id%}">- 登録ユーザー数</a></li>
+            <li {%if $isUse%}class="over"{%/if%}><a href="{%$baseUrl%}/log/dailyuser?appId={%$appInfo.app_id%}">- アプリ利用者数</a></li>
+            <li {%if $isView%}class="over"{%/if%}><a>- 閲覧ビュー数</a></li>
+        </ul>
+        <h2 >ユーザー属性</h2>
+        <ul>
+            <li {%if $isGender%}class="over"{%/if%}><a href="{%$baseUrl%}/log/gender?appId={%$appInfo.app_id%}">- 男女比率</a></li>
+            <li {%if $isAge%}class="over"{%/if%}><a href="{%$baseUrl%}/log/age?appId={%$appInfo.app_id%}">- 年齢比率</a></li>
+            <li {%if $isAddress%}class="over"{%/if%}><a href="{%$baseUrl%}/log/address?appId={%$appInfo.app_id%}">- 現在地比率</a></li>
+            <li {%if $isMyMixi%}class="over"{%/if%}><a href="{%$baseUrl%}/log/mymixi?appId={%$appInfo.app_id%}">- マイミク分布数</a></li>
+        </ul>
+        <h2 >バイラル効果</h2>
+        <ul>
+            <li {%if $isInvite%}class="over"{%/if%}><a href="{%$baseUrl%}/log/invite?appId={%$appInfo.app_id%}">- マイミク招待者数</a></li>
+            <li {%if $isFeed%}class="over"{%/if%}><a href="{%$baseUrl%}/log/feed?appId={%$appInfo.app_id%}">- 配信フィード数</a></li>
+        </ul>
+        <form id="frmSearch" name="frmSearch" method="post" action="{%$baseUrl%}/{%$action%}">
+                                開始日:{%$startDate%}
+            <input type="text" id="datepickerStart" class="textField" name="datepickerStart" value="{%$startDate%}" />
+                                終了日:<input type="text" class="textField" id="datepickerEnd" name="datepickerEnd" value="{%$endDate%}"  />
+            <input type="hidden" id="showType" name="showType" value="1"  />
+            <input type="hidden" id="appId" name="appId" value="{%$appInfo.app_id%}"  />
+            <input type="hidden" id="pageIndex" name="pageIndex" value="{%$pageIndex%}" />
+            <input type="hidden" id="hidSrhName" name="hidSrhName" value="{%$hidSrhName%}" />
+            <input type="hidden" id="hidSrhOwner" name="hidSrhOwner" value="{%$hidSrhOwner%}" />
+            <input type="hidden" id="hidSrhCate" name="hidSrhCate" value="{%$hidSrhCate%}" />
+        </form>
+        <input id="btnSearch" type="button" value="search"/>
+        </div><!--#leftmenu-->
+        <script src="{%$staticUrl%}/admin/js/log/common.js?{%$version.js%}"></script>
+        <script src="{%$staticUrl%}/admin/js/log/basiccommon.js?{%$version.js%}"></script>
+        <div id="mainColumn">
+            <div id="contentTitle">
+                <dl>                
+                    <dt>ログ管理― Top―アプリログ概要[オーナー:{%$appInfo.login_id%} ｜アプリ：{%$appInfo.app_name%}]</dt>
+                </dl>
+            </div><!--#contentTitle-->

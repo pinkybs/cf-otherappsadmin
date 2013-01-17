@@ -1,0 +1,26 @@
+{%include file="log/commonmenu.phtml"%}
+
+            <p><a href="{%$baseUrl%}/log/list">アプリケーション一覧</a>　&gt;&gt;ログ管理-トラフィック-アプリ利用者数</p>
+            <h3>アプリ利用者数[{%$beginDate|date_format:"%Y年%m月%d日" %}－{% $endDate|date_format:"%Y年%m月%d日" %}]　総合計アプリ利用者数：{%$sum%}人</h3>
+            <div id="mainContent">
+			<div id="image"> 
+				<ul class="clearfix">
+				<li><a href="javascript:void(0);" id="linkShowHistogram" onclick="ckShowGragh('1');return false;" >Histogram</a></li>
+				<li><a href="javascript:void(0);" id="linkShowLine" onclick="ckShowGragh('2');return false;">Line</a></li>
+            </ul>
+            {%if $aryBasicInfo%}
+            <img alt="Vertical bars chart" src="{%$baseUrl%}/generated/use/use{%$uid%}_{%$type%}.png" style="border: 1px solid gray;"/>
+            {%/if%}
+            <input type="hidden" id="mixiAppId" name="mixiAppId" value="{%$appInfo.mixi_app_id%}"  />
+            <input type="hidden" id="index" name="index" value="1"  />
+            <input type="hidden" id="type" name="type" value="daily"  />
+            </div>
+            <div id="divList"></div>
+            <br/><br/><br/>
+                <a href="javascript:void(0);" id = "btnBack" >&lt;&lt;管理アプリケーション一覧へ</a>
+            </div><!--#"mainContent"-->
+        </div><!--#mainColumn-->
+
+    </div><!--/#container-->
+
+{%include file="footer.phtml"%}

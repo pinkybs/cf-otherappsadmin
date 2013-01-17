@@ -1,0 +1,28 @@
+{%include file="user/commonmenu.phtml"%}
+
+    <div id="container">
+        <h2>アプリケーションオーナー一覧</h2>
+        <br />
+        <table class="search">
+        <tr>
+        <td nowrap>アプリケーション名：<input type="text" id="txtSrhAppName" name="txtSrhAppName" value="{%$hidSrhAppName%}"  maxlength="50" /></td>
+        <td nowrap>オーナー：<input type="text" id="txtSrhOwner" name="txtSrhOwner" value="{%$hidSrhOwner%}"  maxlength="50" /></td>
+        <td nowrap><input type="button" id="btnSearch" name="btnSearch" value="　検索　" />
+        <input type="button" id="btnClear" name="btnClear" value="　クリア　" />
+        </td>
+        </tr>
+        </table>
+        <p class="sub">アプリケーションオーナーは<span id="lblTotalCount">0</span>社登録されています。そのうち<span id="lblPageCount">0</span>件を表示しています。　　　　　　　　　　　　　　　　　　　　　　　&nbsp;
+        <input type="button" id="btnNew" name="btnNew" value="オーナー新規登録" /></p>
+        <div id="divList" style="margin-bottom:12px;"></div>
+
+        <form method="post" id="frmBack" name="frmBack">
+            <input type="hidden" id="pageIndex" name="pageIndex" value="{%$pageIndex%}" />
+            <input type="hidden" id="hidSrhAppName" name="hidSrhAppName" value="{%$hidSrhAppName%}" />
+            <input type="hidden" id="hidSrhOwner" name="hidSrhOwner" value="{%$hidSrhOwner%}" />
+        </form>
+        <script src="{%$staticUrl%}/admin/js/user/ownertop.js?{%$version.js%}"></script>
+        
+    </div><!--/#container-->
+
+{%include file="footer.phtml"%}

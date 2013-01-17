@@ -1,0 +1,45 @@
+{%include file="header.phtml"%}
+   
+<body id="admin">
+    <div id="top">
+        <h1>OpenSocial APP Control Panel</h1>
+        
+        <p class="user">
+            user:{%$loginId%}|
+            <a href="{%$baseUrl%}/manage/topmenu">管理メニュー</a>|
+            <a href="{%$baseUrl%}/auth/logout">ログアウト</a>
+        </p>
+    </div>
+	<div id="container">
+		<h2>アプリケーション一覧</h2>
+		<table class="search">
+		<tr>
+		<td nowrap>アプリケーション名：<input type="text" id="txtSrhName" name="txtSrhName" value="{%$hidSrhName%}"  maxlength="50" /></td>
+		<td nowrap>オーナー：<input type="text" id="txtSrhOwner" name="txtSrhOwner" value="{%$hidSrhOwner%}"  maxlength="50" /></td>
+		<td nowrap>カテゴリー：<select id="selSrhCate" name="selSrhCate">
+					<option value="">選択なし</option>
+					{% foreach from=$lstCate item=cateData %}
+					<option value="{%$cateData.cid%}" {% if $cateData.cid==$hidSrhCate %}selected="selected"{% /if %}>{%$cateData.category_name|escape%}</option>
+					{% /foreach %}
+				</select></td>
+		<td nowrap><input type="button" id="btnSearch" name="btnSearch" value="　検索　" />
+		<input type="button" id="btnClear" name="btnClear" value="　クリア　" />
+		</td>
+		</tr>
+	    </table>
+	    <p class="sub">
+                    設定済みクロール対象サイトは<span id="lblTotalCount">0</span>件あります。そのうち<span id="lblPageCount">0</span>件を表示しています。　　　　　　　　　　　　　　　　　　　　　　　&nbsp;
+	    </p>
+		<div id="divList" style="margin-bottom:12px;"></div>
+
+		<form method="post" id="frmBack">
+			<input type="hidden" id="pageIndex" name="pageIndex" value="{%$pageIndex%}" />
+			<input type="hidden" id="hidSrhName" name="hidSrhName" value="{%$hidSrhName%}" />
+			<input type="hidden" id="hidSrhOwner" name="hidSrhOwner" value="{%$hidSrhOwner%}" />
+			<input type="hidden" id="hidSrhCate" name="hidSrhCate" value="{%$hidSrhCate%}" />
+		</form>
+		<script src="{%$staticUrl%}/admin/js/log/list.js?{%$version.js%}"></script>
+		
+	</div><!--/#container-->
+
+{%include file="footer.phtml"%}

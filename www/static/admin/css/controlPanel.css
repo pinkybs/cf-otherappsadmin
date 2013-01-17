@@ -1,0 +1,234 @@
+#top{
+	padding: 5px;
+	color: #ffffff;
+	
+	background:#002060;
+	position: relative;
+}
+#top h1{
+	font-size: 160%;
+	font-family: "Arial Black";
+}
+
+#top p{
+	color:#ffc000;
+	padding:10px;
+	font-weight:normal;
+	border:1px solid #FFFFFF;
+	background:#376092;
+	position: absolute;
+	right:0;
+	bottom:1px;
+}
+#top p a{
+	color: #CCCCCC;
+}
+body#admin #container table.search{
+	width:90%;
+	border:1px solid #17375e;
+	background:#dce6f2;
+}
+body#admin #container table.search td
+{
+	padding:5px;
+}
+body#admin #container table.search input{
+	border:1px solid #7f7f7f;
+}
+body#admin #container p.sub{
+	width:90%;
+	padding:5px;
+}
+
+body#admin #container #leftmenu{
+	width:140px;
+	margin-right:1px;
+	float:left;
+
+}
+body#admin #container h2{
+	color:#FFF;
+	background:#a6a6a6;
+	border:1px solid #17375e;
+	margin-bottom:5px;
+}
+body#admin #container #leftmenu h2{
+	font-weight:bold;
+	color:#10253f;
+	background:#c4cddd;
+}
+
+body#admin #container  #leftmenu ul {
+	margin:0 auto;
+	padding:8px 0;
+}
+body#admin #container  #leftmenu ul li{
+	height:28px;
+	padding:0 5px;
+	margin:0 auto;
+	list-style-type:none;
+}
+body#admin #container  #leftmenu ul li a{
+	color:#002060;
+}
+body#admin #container  #leftmenu ul li a:hover{
+	text-decoration:none;
+}
+body#admin #container  #leftmenu ul li.over a{
+	color:#ff0000;
+	font-weight:bold;
+}
+body#admin #container  #leftmenu ul li.over a:hover{
+	text-decoration:none;
+}
+body#admin #container  #leftmenu .textField{
+	width:90%;
+}
+body#admin #container #mainColumn{
+	padding-left:5px;
+	padding-bottom:10px;
+}
+
+body#admin #container #mainColumn #contentTitle{
+	background:#a6a6a6;
+	border:1px solid #7f7f7f;
+	color: #FFFFFF;
+	font-weight:bold;
+	padding:3px;
+	margin:2px;
+}
+body#admin #container #mainColumn p{
+	padding:5px;
+}
+body#admin #container h3{
+	font-weight:bold;
+	color:#10253f;
+	padding:5px;
+	margin:5px;
+	background:#c4cddd;
+}
+
+body#admin  .mytable {
+	width:90%;
+	padding:0;
+	margin:5px;
+	border-left:1px solid #17375e;
+}
+
+
+ .mytable caption {
+	font-weight:bold;
+	color:#10253f;
+	padding:5px;
+	border-bottom:5px solid #FFFFFF;
+	background:#c4cddd;
+}
+
+.mytable th {
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	text-align: left;
+	border:1px solid #17375e;
+	border-left: none;
+	padding: 6px 6px 6px 12px;
+	background: #d9d9d9;
+}
+/*power by www.winshell.cn*/
+.mytable th.nobg {
+border-top: 0;
+border-left: 0;
+border-right: 1px solid #C1DAD7;
+background: none;
+}
+
+.mytable tr.overlight {
+    background: #dce6f2;
+}
+ .mytable td {
+	padding: 6px 6px 6px 12px;
+	border-right:1px solid #17375e;
+	border-bottom:1px solid #17375e;
+}
+
+.mytable td.alt {
+	background: #dce6f2;
+	padding: 6px 6px 6px 12px;
+}
+
+.mytable td input {
+    height:18px;
+    padding: 1px;
+}
+
+.mytable span {
+    color: red;
+}
+
+body#admin #container #mainColumn #mainContent #image{
+	width:90%;
+	padding:5px;
+}
+body#admin #container #mainColumn #mainContent #image ul{
+	width:100%;
+	padding-left:30px;
+	clear:both;
+}
+body#admin #container #mainColumn #mainContent #image ul li{
+	float:left;
+	margin-right:10px;
+	padding:5px 0;
+	list-style-type: none;
+}
+body#admin #container #mainColumn #mainContent #image ul li a{
+	width:50px;
+	text-align:center;
+	display:block;
+	padding:3px 10px;
+	color: #333333;
+	background:#FFFFFF;
+	border:1px solid #999999;
+	text-decoration:none;
+}
+body#admin #container #mainColumn #mainContent #image ul li a:hover{
+	color:#FFFFFF;
+	background:#999999;
+	border:1px solid #FFFFFF;
+}
+body#admin #container #mainColumn #mainContent #image img{
+	margin:0 30px 20px 30px
+}
+
+body#admin #container #divList ul{
+	padding:5px 0;
+}
+
+.san th{
+	width:33%;
+}
+.si th{
+	width:25%;
+}
+.clear {
+	display: block;
+	clear: both;
+	height: 0;
+	line-height: 0px;
+	font-size: 1px;
+	}
+
+/*clearfix*/
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	height: 0;
+	visibility: hidden;
+	}
+.clearfix {
+	display: inline-table;
+	min-height: 1%;
+	}
+/*Hides from MacIE \*/
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/*Hides from MacIE */

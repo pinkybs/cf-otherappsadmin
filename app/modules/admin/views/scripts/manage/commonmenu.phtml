@@ -1,0 +1,17 @@
+{%include file="header.phtml"%}
+
+<body id="admin">
+    <div id="top">
+        <h1>OpenSocial APP Control Panel</h1>
+        
+        <p class="user">
+            user:{%$loginId%}|
+            <a href="{%$baseUrl%}/manage/topmenu">管理メニュー</a>|
+            <a href="{%$baseUrl%}/auth/logout">ログアウト</a>
+        </p>
+    </div>
+    <ul id="nav">
+        <li><span>アプリケーション管理</span></li>
+        <li><a href="{%$baseUrl%}/user/ownertop">アプリケーションオーナー管理</a></li>
+        <li><a href="{%$baseUrl%}/user/managertop">管理システムユーザー管理</a></li>
+    </ul>

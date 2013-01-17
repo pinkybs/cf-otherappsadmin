@@ -1,0 +1,51 @@
+{%include file="manage/commonmenu.phtml"%}
+
+	<div id="container">
+		<h2>アプリサイト詳細</h2>
+		<div id="auth">
+		    <p><a href="{%$baseUrl%}/manage/listsite">管理アプリサイト一覧</a>　&gt;&gt;アプリサイト詳細</p>
+		    <p>[ID:{%$siteInfo.app_id%}　{%$siteInfo.app_name|escape%}]の詳細情報を表示しています 。</p>
+			<table width="100%" class="mytable">
+			<tr><th style="width:220px;table-layout:fixed;">設定項目</th><th>設定内容</th></tr>
+			<tr class="overlight"><td>アプリケーション名：※</td><td>{%$siteInfo.app_name|escape%}</td>
+			</tr>
+			<tr><td>ミクシィID：※</td><td>{%$siteInfo.mixi_app_id%}</td>
+            </tr>
+			<tr class="overlight"><td>オーナー：※</td><td>{%$siteInfo.login_id|escape%}</td>
+			</tr>
+			<tr><td>OpenSocialサイトURL：※</td><td>{%$siteInfo.site_url%}</td>
+			</tr>
+			<tr class="overlight"><td>カテゴリ：</td><td>{% if $siteInfo.category_name %}{%$siteInfo.category_name|escape%}{%else if%} - {%/if%}</td></tr>
+        	<tr><td>管理ツール設定：</td>
+        	<td>{% if $siteInfo.log_tool %}ログ解析、{%/if%}
+                {% if $siteInfo.CGM_tool %}CGM監視、{%/if%}
+                {% if $siteInfo.point_tool %}ポイント管理、{%/if%}
+                {% if $siteInfo.affiliate_tool %}アフィリエイト、{%/if%}
+                {% if $siteInfo.adviser_tool %}アド、{%/if%}
+                {% if !$siteInfo.log_tool && !$siteInfo.CGM_tool && !$siteInfo.point_tool && !$siteInfo.affiliate_tool && !$adviser_tool.log_tool %}-{%/if%}</td></tr>
+			</table>
+
+<br />
+			<form method="post" id="frmBack" action="{%$baseUrl%}/manage/listsite">
+    			<input type="hidden" id="pageIndex" name="pageIndex" value="{%$pageIndex%}" />
+                <input type="hidden" id="hidSrhName" name="hidSrhName" value="{%$hidSrhName%}" />
+                <input type="hidden" id="hidSrhOwner" name="hidSrhOwner" value="{%$hidSrhOwner%}" />
+                <input type="hidden" id="hidSrhCate" name="hidSrhCate" value="{%$hidSrhCate%}" />
+    			<a href="javascript:void(0);" id = "btnBack" >&lt;&lt;前の画面へ</a>
+			</form>
+		</div><!--/#auth-->
+	</div><!--/#container-->
+	<script type="text/javascript">
+        (function($) {
+        
+        $().ready(function() {
+            $("#btnBack").click(function (){
+            $('#frmBack').submit(); 
+            return false;
+        })
+        });
+    
+        })(jQuery);
+    </script>
+
+{%include file="footer.phtml"%}

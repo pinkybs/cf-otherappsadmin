@@ -1,0 +1,87 @@
+{%include file="header.phtml"%}
+
+<body id="admin">
+    <div id="top">
+	<h1>OpenSocial APP Control Panel</h1>
+	</div>
+	<div id="container">
+		<div id="auth">
+			<p>OpenSocial APP Control Panel管理者ログイン</p>
+			{% if $errmsg %}
+			<div class="error">
+				<p>{%$errmsg|escape%}</p>
+			</div><!--/.error-->
+			{% /if %}
+			<div id = "errShow"class="error"  style="display:none;"><p></p>
+			</div>
+			<form id="frmLogin" name="frmLogin" method="post" action="{%$baseUrl%}/auth/login">
+				<ul>
+					<li><label for="">ログインID：</label><br />
+					<input type="text" id="txtId" name="txtId" maxlength="50" onblur="jQuery.editor.checkValue()" value="{%$adminId%}" tabindex="1"/>
+					<p class="note" id="errId" style="text-align:left;display:none;">※ログインIDを入力して下さい。</p>
+					</li>
+					<li><label for="">パスワード：</label><br />
+						<input type="password" id="txtPw" name="txtPw" maxlength="12" tabindex="2" onblur="jQuery.editor.checkValue()"  />
+					</li>
+					<li><input type="button" value="　ログイン　" onclick="jQuery.editor.login();" tabindex="3" /></li>
+				</ul>
+			</form>
+		</div><!--/#auth-->
+	</div><!--/#container-->
+	<script type="text/javascript">
+    (function($) {
+    
+    $(document).ready(function() {
+        //jQuery.editor.checkValue();
+    });
+    
+    $.editor = {
+    
+        checkValue : function()
+        {
+            var txtId = $('#txtId').val();
+            var txtPw = $('#txtPw').val();
+            var alertInfo = '';
+            //clear 'space'
+            txtId = jQuery.cTrim(txtId, 0);
+            txtPw = jQuery.cTrim(txtPw, 0);
+    
+            if ( !txtId ) {
+                alertInfo += 'ログインIDを入力して下さい。<br/>';
+            }
+            if ( !txtPw ) {
+                alertInfo += 'ログインPasswordを入力して下さい。';
+            }
+            $("#errShow > p").html(alertInfo);
+            if (alertInfo != '') {
+                $( 'div#errShow' ).css({ display: "" });
+            }
+            else {
+                $( 'div#errShow' ).css({ display: "none" });
+            }
+        },
+        
+        /**
+           * submit to login action
+           * @param  null
+           * @return void
+           */
+        login : function()
+        {
+            var txtId = $('#txtId').val();
+            var txtPw = $('#txtPw').val();
+            //clear 'space'
+            txtId = jQuery.cTrim(txtId, 0);
+            txtPw = jQuery.cTrim(txtPw, 0);
+          
+            if ( !txtId || !txtPw) {
+                return;
+            }
+         
+            $('#frmLogin').submit();
+        } 
+    };
+        
+    })(jQuery);
+	</script>
+{%include file="footer.phtml"%}

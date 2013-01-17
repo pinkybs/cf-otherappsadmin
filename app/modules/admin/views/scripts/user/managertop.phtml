@@ -1,0 +1,22 @@
+{%include file="user/managermenu.phtml"%}
+
+    <div id="container">
+        <h2>管理システムユーザー一覧</h2>
+        <br />
+        <table>
+        <tr>
+        <td nowrap colspan="5">管理ユーザーは<span id="lblTotalCount">0</span>人登録されています。そのうち<span id="lblPageCount">0</span>件を表示しています。&nbsp;
+        <input type="button" id="btnNew" name="btnNew" value="ユーザー新規登録" /></td>
+        </tr>
+        </table>
+        <br />
+        <div id="divList" style="margin-bottom:12px;"></div>
+
+        <form method="post" id="frmBack">
+            <input type="hidden" id="pageIndex" name="pageIndex" value="{%$pageIndex%}" />
+        </form>
+        <script src="{%$staticUrl%}/admin/js/user/managerlist.js?{%$version.js%}"></script>
+        
+    </div><!--/#container-->
+
+{%include file="footer.phtml"%}

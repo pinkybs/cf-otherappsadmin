@@ -1,0 +1,49 @@
+{%include file="log/commonmenu.phtml"%}
+            <p><a href="{%$baseUrl%}/log/list">アプリケーション一覧</a>　&gt;&gt;ログ管理-ユーザー属性-男女比率</p>
+            <h3>男女比率[{%$startDate|date_format:"%Y年%m月%d日" %}－{% $endDate|date_format:"%Y年%m月%d日" %}]　
+            {% if $aryInfo %}      
+                        全期間比率：男性：{%$aryInfo.male_rate%}%[{%$aryInfo.male_count%}人] 女性：{%$aryInfo.female_rate%}%[{%$aryInfo.female_count%}人]
+            {% else if%}
+                         全期間比率：男性0%[0人] 女性：0%[0人]
+            {%/if%}
+            </h3>
+            <div id="mainContent">
+			<div id="image">
+				<ul class="clearfix">
+					<li><a href="javascript:void(0);" onclick="ckShowGragh('1');return false;" >Pie</a></li>
+					<li><a href="javascript:void(0);" onclick="ckShowGragh('2');return false;">Histogram</a></li>
+				</ul>
+				{%if $aryInfo%}
+				<img alt="chart" src="{%$baseUrl%}/generated/gender/gender{%$uid%}_{%$type%}.png" style="border: 1px solid gray;"/>
+				{%/if%}
+				<input type="hidden" id="mixiAppId" name="mixiAppId" value="{%$appInfo.mixi_app_id%}"  />
+				<input type="hidden" id="index" name="index" value="1"  />
+			</div>
+            {% if $aryInfo %}
+              <table id="gender"class="mytable" cellspacing="0" summary="The technical specifications of the Apple
+                    PowerMac G5 series">
+                    <caption>男女比率</caption>
+                    <tr>
+                    <th scope="col">期間</th>
+                    <th scope="col">男性[比率/人数]</th>
+                    <th scope="col">女性[比率/人数]</th>
+                    <th scope="col">Unknown[比率/人数]</th>
+                    </tr>
+                    <tr>
+                    <td class="row">{%$startDate|date_format:"%Y年%m月%d日" %}－{% $endDate|date_format:"%Y年%m月%d日" %}</td>
+                    <td class="row">{%$aryInfo.male_rate%}%[{%$aryInfo.male_count%}人]</td>
+                    <td class="row">{%$aryInfo.female_rate%}%[{%$aryInfo.female_count%}人]</td>
+                    <td class="row">{%$aryInfo.unknown_rate%}%[{%$aryInfo.unknown_count%}人]</td>
+                    </tr>
+                </table>
+             {% else if%}
+                                何もありません！
+             {%/if%}
+             <br/><br/><br/>
+                <a href="javascript:void(0);" id = "btnBack" >&lt;&lt;管理アプリケーション一覧へ</a>
+            </div><!--#"mainContent"-->
+        </div><!--#mainColumn-->
+
+    </div><!--/#container-->
+
+{%include file="footer.phtml"%}

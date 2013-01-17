@@ -1,0 +1,36 @@
+{%include file="user/commonmenu.phtml"%}
+
+	<div id="container">
+		<h2>アプリケーションオーナー詳細</h2>
+		<div id="admin">
+		    <p><a href="{%$baseUrl%}/user/ownertop">アプリケーションオーナー一覧　</a>　&gt;&gt;アプリケーションオーナー詳細</p>
+		    <p>登録済みアプリケーションオーナー [ID:{%$ownerInfo.uid%}　{%$ownerInfo.name|escape%}] の詳細情報を表示しています。登録アプリ一覧の各種管理エリアから任意の管理画面へ遷移できます。オーナーの管理画面へのアクセスログは「アクセスログ」ボタンを押すと表示されます。</p>
+			<h2>基本情報</h2>
+			<table width="100%"　style="clear: both;" class="mytable">
+    			<tr><th style="width:220px;table-layout:fixed;">設定項目</th><th>設定内容</th></tr>
+    			<tr class="overlight"><td>オーナー名（会社名）：※</td><td>{%$ownerInfo.name|escape%}</td>
+    			</tr>
+    			<tr><td>管理サイトログインID：※</td><td>{%$ownerInfo.login_id|escape%}</td>
+    			</tr>
+    			<tr class="overlight"><td>登録アプリサイト数：※</td><td>{%$ownerInfo.app_count%}</td>
+    			</tr>
+    			<tr><td>管理サイトサイト名：※</td><td>{%$ownerInfo.apps|escape%}</td></tr>
+			</table>
+            <h2>登録アプリ一覧</h2>
+            <p>登録済みアプリケーションは<span id="lblTotalCount">0</span>件あります。そのうち<span id="lblPageCount">0</span>件を表示しています。</p>
+            <div id="divList" style="margin-bottom:12px;"></div>
+            <input type="hidden" id="hidUid" name="hidUid" value="{%$ownerInfo.uid%}" />
+            <input type="hidden" id="appPageIndex" name="appPageIndex" value="1" />
+<br />
+			<form method="post" id="frmBack" action="{%$baseUrl%}/user/ownertop">
+    			<input type="hidden" id="pageIndex" name="pageIndex" value="{%$pageIndex%}" />
+                <input type="hidden" id="hidSrhName" name="hidSrhName" value="{%$hidSrhName%}" />
+                <input type="hidden" id="hidSrhOwner" name="hidSrhOwner" value="{%$hidSrhOwner%}" />
+                <input type="hidden" id="hidSrhCate" name="hidSrhCate" value="{%$hidSrhCate%}" />
+    			<a href="javascript:void(0);" id="btnBack">&lt;&lt;前の画面へ</a>
+			</form>
+		</div><!--/#auth-->
+	</div><!--/#container-->
+	<script src="{%$staticUrl%}/admin/js/user/ownerdetail.js?{%$version.js%}"></script>
+
+{%include file="footer.phtml"%}

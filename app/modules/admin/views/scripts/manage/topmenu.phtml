@@ -1,0 +1,32 @@
+{%include file="header.phtml"%}
+
+<body id="admin">
+	<div id="top">
+        <h1>OpenSocial APP Control Panel</h1>
+        
+        <p class="user">
+            user:{%$loginId%}|
+            <a href="{%$baseUrl%}/manage/topmenu">管理メニュー</a>|
+            <a href="{%$baseUrl%}/auth/logout">ログアウト</a>
+        </p>
+    </div>
+	<div id="container">
+		<h2>管理メニュー</h2>
+		<br />
+		{% if $isAdminAuth %}
+		<p>■　<a href="{%$baseUrl%}/manage/listsite">システム基本管理:</a>　管理アプリサイト、顧客（アプリオーナー）、本サイト管理ユーザー設定ができます。</p>
+		{%/if%}
+		<HR style="display:block;margin-top:5px;margin-bottom:5px;">
+        <p>■　<a href="{%$baseUrl%}/log/list">ログ解析管理：</a>　各登録アプリのログ解析を管理できます。</p>
+		<HR style="display:block;margin-top:5px;margin-bottom:5px;">
+		<p>■　<a href="{%$baseUrl%}/cmg/top">CGM監視：</a>　各登録アプリの書き込み監視ができます。</p>
+		<HR style="display:block;margin-top:5px;margin-bottom:5px;">
+		<p>■　<a href="{%$baseUrl%}/point/top">ポイント管理：</a>　各登録アプリで発生するポイントを管理できます。</p>
+		<HR style="display:block;margin-top:5px;margin-bottom:5px;">
+		<p>■　<a href="{%$baseUrl%}/affiliate/top">アフィリエイト管理：</a>　各登録アプリに対するアフィリエイト管理ができます。</p>
+        <HR style="display:block;margin-top:5px;margin-bottom:5px;">
+		<p>■　<a href="{%$baseUrl%}/advise/top">アドネットワーク管理：</a>　アド（広告）ネットワークを管理できます。</p>
+        <HR style="display:block;margin-top:5px;margin-bottom:5px;">
+	</div><!--/#container-->
+
+{%include file="footer.phtml"%}

@@ -1,0 +1,34 @@
+{%include file="user/managermenu.phtml"%}
+
+    <div id="container" >
+        <h2>管理ユーザー情報変更</h2>
+        <div id="auth">
+            <p><a href="{%$baseUrl%}/user/managertop">管理ユーザー一覧</a>　&gt;&gt;管理ユーザー情報変更</p>
+            <p>管理ユーザーを新規登録します。フォームに必要事項を入力・選択し、「新規登録」ボタンを押して下さい。※：必須</p><br />
+            <div id="completeMsg" style="display:none" class="completeMsg"></div>
+            <div id="errMsg" class="error" style="display:none"></div>
+			<form method="post" id="frmAdd">
+				<table width="100%" class="mytable">
+				<tr><th style="width:220px;table-layout:fixed;">設定項目</th><th>設定内容</th></tr>
+				<tr class="overlight"><td>ユーザー名：※<br/>（ログインID）</td>
+				<td><input type="text" id="txtLoginId" name="txtLoginId" value="{%$ownerInfo.login_id%}" maxlength="20" size="60" onblur="jQuery.editmanager.checkIdValue()"/>
+				<div class="validation-advice" id="divIdErr" title="ログインIDを設定して下さい。" style="display:none;"></div></td>
+				</tr>
+				<tr><td>パスワード：※</td>
+				<td><input type="password" id="txtPW" name="txtPW" value="" onblur="jQuery.editmanager.checkPWValue()" maxlength="50" size="60" />
+				<div class="validation-advice" id="divPWErr" title="パスワードを入力して下さい。" style="display:none;"></div></td>
+				</tr>
+				<tr><td colspan="2"><input type="button" id="btnSubmit" value="情報変更" /></td></tr>
+				</table>
+				<input type="hidden" id="hidUid" name="hidUid" value="{%$ownerInfo.uid%}" />
+			</form>
+<br />
+			<form method="post" id="frmBack" action="{%$baseUrl%}/user/managertop">
+    			<input type="hidden" id="pageIndex" name="pageIndex" value="{%$pageIndex%}" />
+    			<a href="javascript:void(0);" id = "btnBack" >&lt;&lt;前の画面へ</a>
+			</form>
+		</div><!--/#auth-->
+		<script src="{%$staticUrl%}/admin/js/user/editmanager.js?{%$version.js%}"></script>
+	</div><!--/#container-->
+
+{%include file="footer.phtml"%}

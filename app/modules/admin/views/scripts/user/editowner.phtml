@@ -1,0 +1,40 @@
+{%include file="user/commonmenu.phtml"%}
+
+	<div id="container" >
+		<h2>アプリケーションオーナー変更</h2>
+		<div id="auth">
+		    <p><a href="{%$baseUrl%}/user/ownertop">アプリケーションオーナー一覧</a>　&gt;&gt;アプリケーションオーナー変更</p>
+			<p>登録済みアプリケーションオーナー [ID:{%$ownerInfo.uid%} {%$ownerInfo.name%}] の情報変更をします。フォームに必要事項を入力・選択し、「情報変更」ボタンを押して下さい。※：必須</p><br />
+            <div id="completeMsg" style="display:none" class="completeMsg"></div>
+            <div id="errMsg" class="error" style="display:none"></div>
+			<form method="post" id="frmAdd" class="mytable">
+				<table width="100%">
+				<tr><th style="width:220px;table-layout:fixed;">設定項目</th><th>設定内容</th></tr>
+				<tr class="overlight"><td>オーナー名（会社名）：※</td>
+				<td><input type="text" id="txtOwnerName" name="txtOwnerName" value="{%$ownerInfo.name%}" onblur="jQuery.editowner.checkNameValue()" maxlength="50" size="60" />
+				<div class="validation-advice" id="divNameErr" title="オーナー名を設定して下さい。" style="display:none;"></div></td>
+				</tr>
+				<tr><td>管理サイトログインID：※</td>
+				<td><input type="text" id="txtLoginId" name="txtLoginId" value="{%$ownerInfo.login_id%}" maxlength="20" size="60" onblur="jQuery.editowner.checkIdValue()"/>
+				<div class="validation-advice" id="divIdErr" title="ログインIDを設定して下さい。" style="display:none;"></div></td>
+				</tr>
+				<tr class="overlight"><td>管理サイトパスワード：※</td>
+				<td><input type="password" id="txtPW" name="txtPW" value="" onblur="jQuery.editowner.checkPWValue()" maxlength="50" size="60" />
+				<div class="validation-advice" id="divPWErr" title="パスワードを入力して下さい。" style="display:none;"></div></td>
+				</tr>
+				<tr><td colspan="2"><input type="button" id="btnSubmit" value="情報変更" /></td></tr>
+				</table>
+				<input type="hidden" id="hidUid" name="hidUid" value="{%$ownerInfo.uid%}" />
+			</form>
+<br />
+			<form method="post" id="frmBack" action="{%$baseUrl%}/user/ownertop">
+    			<input type="hidden" id="pageIndex" name="pageIndex" value="{%$pageIndex%}" />
+                <input type="hidden" id="hidSrhAppName" name="hidSrhAppName" value="{%$hidSrhAppName%}" />
+                <input type="hidden" id="hidSrhOwner" name="hidSrhOwner" value="{%$hidSrhOwner%}" />
+    			<a href="javascript:void(0);" id = "btnBack" >&lt;&lt;前の画面へ</a>
+			</form>
+		</div><!--/#auth-->
+		<script src="{%$staticUrl%}/admin/js/user/editowner.js?{%$version.js%}"></script>
+	</div><!--/#container-->
+
+{%include file="footer.phtml"%}

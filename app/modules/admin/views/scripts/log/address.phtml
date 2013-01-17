@@ -1,0 +1,46 @@
+{%include file="log/commonmenu.phtml"%}
+
+            <p><a href="{%$baseUrl%}/log/list">アプリケーション一覧</a>　&gt;&gt;ログ管理-ユーザー属性-現在地分布数</p>
+            <h3>現在地比率[{%$startDate|date_format:"%Y年%m月%d日" %}－{% $endDate|date_format:"%Y年%m月%d日" %}]</h3>
+            <div id="mainContent">
+			<div id="image">
+				<ul class="clearfix">
+					<li><a href="javascript:void(0);" onclick="ckShowGragh('1');return false;" >Pie</a></li>
+					<li><a href="javascript:void(0);" onclick="ckShowGragh('2');return false;">Histogram</a></li>
+				</ul>
+				{%if $aryInfo%}
+				<img alt="chart" src="{%$baseUrl%}/generated/address/address{%$uid%}_{%$type%}.png" style="border: 1px solid gray;"/>
+				{%/if%}
+				<input type="hidden" id="mixiAppId" name="mixiAppId" value="{%$appInfo.mixi_app_id%}"  />
+				<input type="hidden" id="index" name="index" value="1"  />
+            </div>
+             {% if $aryInfo %}
+                <table id="age"class="mytable" cellspacing="0" summary="The technical specifications of the Apple
+                    PowerMac G5 series">
+                    <caption>現在地比率</caption>
+                    <tr>
+                        <th scope="col">ランク</th>
+                        <th scope="col">現在地名 </th>
+                        <th scope="col">人数</th>
+                    </tr>
+                    {% foreach from=$aryAddressName key=k item=data name=address %}
+                    <tr {%if $smarty.foreach.address.index%2 %}class="overlight"{%/if%}>
+                    <td class="row">{%$smarty.foreach.address.index+1%} </td>
+                    <td class="row">{%$data%}</td>
+                    <td class="row">{%math equation="round(count / sum *100)" 
+                    count=$aryInfo.$k
+                    sum=$sum"%}%[{%$aryInfo.$k%}人]</td>
+                    </tr>
+                    {%/foreach%}
+                </table>
+                {% else if %}
+                                    何もありません
+               {%/if%}
+             <br/><br/><br/>
+                <a href="javascript:void(0);" id = "btnBack" >&lt;&lt;管理アプリケーション一覧へ</a>
+            </div><!--#"mainContent"-->
+        </div><!--#mainColumn-->
+
+    </div><!--/#container-->
+
+{%include file="footer.phtml"%}

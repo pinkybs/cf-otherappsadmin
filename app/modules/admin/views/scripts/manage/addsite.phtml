@@ -1,0 +1,60 @@
+{%include file="manage/commonmenu.phtml"%}
+
+	<div id="container">
+		<h2>アプリサイト新規登録</h2>
+		<div id="auth">
+		    <p><a href="{%$baseUrl%}/manage/listsite">管理アプリサイト一覧</a>　&gt;&gt;アプリサイト新規登録</p>
+			<p>クロール対象となるサイトを新規登録します。フォームに必要事項を入力・選択し、「設定」ボタンを押して下さい。<span style="color:red">※</span>：必須</p>
+			<div id="completeMsg" style="display:none" class="completeMsg"></div>
+			<form method="post" id="frmAdd" class="mytable">
+				<table width="100%">
+				<tr><th scope="col" style="width:220px;table-layout:fixed;">設定項目</th><th>設定内容</th></tr>
+				<tr class="overlight"><td>アプリケーション名：<span>※</span></td>
+				<td><input type="text" id="txtAppName" name="txtAppName" value="" onblur="jQuery.addapp.checkAppValue()" maxlength="50" size="60"/>
+				<div class="validation-advice" id="divAppErr" title="アプリケーション名を設定して下さい。" style="display:none;"></div></td>
+				</tr>
+				<tr ><td>ミクシィID：<span>※</span></td>
+				<td><input type="text" id="txtMixiID" name="txtMixiID" value="" onblur="jQuery.addapp.checkIDValue()"  maxlength="50" size="60"/>
+                <div class="validation-advice" id="divIdErr" title="ミクシィIDを入力して下さい。" style="display:none;"></div></td>
+                </tr>
+				<tr class="overlight"><td>オーナー：<span>※</span></td>
+				<td><select id="selOwner" name="selOwner" onblur="jQuery.addapp.checkOwnerValue()">
+                             <option value="">選択なし</option>
+                             {% foreach from=$lstOwner item=ownerData %}
+                                <option value="{%$ownerData.uid%}">{%$ownerData.login_id|escape%}</option>
+                             {% /foreach %}
+                           </select>
+				<div class="validation-advice" id="divOwnerErr" title="オーナーを設定して下さい。" style="display:none;"></div></td>
+				</tr>
+				<tr><td>OpenSocialサイトURL：<span>※</span></td><td><input type="text" id="txtUrl" name="txtUrl" value=""  onblur="jQuery.addapp.checkUrlValue()" maxlength="255" size="60"/>
+				<div class="validation-advice" id="divUrlErr" title="OpenSocialサイトURLを入力して下さい。" style="display:none;"></div></td>
+				</tr>
+				<tr class="overlight"><td>カテゴリ：</td><td><select id="selCate" name="selCate">
+            					<option value="">選択なし</option>
+            					{% foreach from=$lstCate item=cateData %}
+            					<option value="{%$cateData.cid%}">{%$cateData.category_name|escape%}</option>
+            					{% /foreach %}
+            				</select></td></tr>
+            	<tr><td>管理ツール設定：</td>
+            	<td><input name="chxlog" type="checkbox" id="chxlog" value="1"/>ログ解析
+            	<input name="chxCgm" type="checkbox" id="chxCgm" value="1"/>CGM監視
+            	<input name="chxPoint" type="checkbox" id="chxPoint" value="1"/>ポイント管理
+            	<input name="chxAffiliate" type="checkbox" id="chxAffiliate" value="1"/>アフィリエイト
+            	<input name="chxAdvise" type="checkbox" id="chxAdvise" value="1"/>アド</td></tr>		
+				<tr><td colspan="2"><input type="button" id="btnSubmit" value="新規登録" /></td>
+				</tr>
+				</table>
+			</form>
+            <br />
+			<form method="post" id="frmBack" action="{%$baseUrl%}/manage/listsite">
+    			<input type="hidden" id="pageIndex" name="pageIndex" value="{%$pageIndex%}" />
+                <input type="hidden" id="hidSrhName" name="hidSrhName" value="{%$hidSrhName%}" />
+                <input type="hidden" id="hidSrhOwner" name="hidSrhOwner" value="{%$hidSrhOwner%}" />
+                <input type="hidden" id="hidSrhCate" name="hidSrhCate" value="{%$hidSrhCate%}" />
+    			<a href="javascript:void(0);" id = "btnBack" >&lt;&lt;前の画面へ</a>
+			</form>
+		</div><!--/#auth-->
+		<script src="{%$staticUrl%}/admin/js/manage/addapp.js?{%$version.js%}"></script>
+	</div><!--/#container-->
+
+{%include file="footer.phtml"%}

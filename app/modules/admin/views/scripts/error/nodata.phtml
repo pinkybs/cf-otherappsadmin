@@ -1,0 +1,13 @@
+{%include file="header.phtml"%}
+
+<body id="admin">
+    <div id="top">
+	<h1>OpenSocial APP Control Panel</h1>
+	</div>
+	<div id="container">
+		<h2>Sorry,There are no data for this application. :: ごめんなさい＞＜<br />{% if $message %}{%$message|escape%}{% /if %}</h2>
+		<br/>
+		<a href="{%$baseUrl%}/log/list" >&lt;&lt;アプリケーション一覧へ</a>
+	</div><!--/#container-->
+
+{%include file="footer.phtml"%}
